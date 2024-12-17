@@ -3,6 +3,8 @@ import express from 'express';
 import logger from './middleware/logger.js';
 import auth from './middleware/auth.js';
 import device from './routes/device.js';
+import report from './routes/report.js';
+import user from './routes/user.js';
 
 const app = express();
 app.use(logger);
@@ -17,6 +19,8 @@ app.all('/', (req, res) => {
 });
 
 app.use('/device', device);
+app.use('/report', report);
+app.use('/user', user);
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);

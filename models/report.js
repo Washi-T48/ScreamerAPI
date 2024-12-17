@@ -1,6 +1,6 @@
 import db from '../config/conn.js';
 
-const newReport = async (data) => {
+const createReport = async (data) => {
     const stmt = db.prepare('INSERT INTO report (deviceID, time, status) VALUES (?, ?, ?)');
     return stmt.run(data.deviceID, data.time, data.status);
 };
@@ -26,7 +26,7 @@ const deleteReport = async (data) => {
 };
 
 export {
-    newReport,
+    createReport,
     listReport,
     listReportByDevice,
     updateReport,
