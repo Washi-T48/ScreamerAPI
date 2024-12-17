@@ -1,4 +1,6 @@
-import express from 'express';
+import Router from 'express';
+const device = Router();
+
 import {
     createDevice,
     getDeviceInfo,
@@ -6,8 +8,6 @@ import {
     updateDevice,
     deleteDevice,
 } from '../models/device.js';
-
-const device = express.Router();
 
 device.all('/', (req, res) => {
     res.sendStatus(200);

@@ -1,6 +1,13 @@
-import express, { Router } from 'express';
+import Router from 'express';
+const report = Router();
 
-const report = express.Router();
+import {
+    createReport,
+    listReport,
+    listReportByDevice,
+    updateReport,
+    deleteReport,
+} from '../models/report.js';
 
 report.all('/', (req, res) => {
     res.sendStatus(200);
@@ -28,7 +35,7 @@ report.get('/list', async (req, res) => {
     }
 });
 
-Router.get('/list/:deviceID', async (req, res) => {
+report.get('/list/:deviceID', async (req, res) => {
     try {
         const { deviceID } = req.params;
         if (!deviceID) { throw new Error('deviceID is required'); }
@@ -61,3 +68,5 @@ report.post('/delete', async (req, res) => {
         console.log(e);
     }
 });
+
+export default report;
