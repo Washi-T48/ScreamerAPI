@@ -3,7 +3,7 @@ import express from 'express';
 const auth = express.Router();
 
 auth.use((req, res, next) => {
-    console.log(`AUTH: ${req.headers.key}`);
+    console.log(`AUTH: PASS`);
     next();
 });
 
