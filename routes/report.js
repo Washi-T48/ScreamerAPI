@@ -48,9 +48,9 @@ report.get('/list/:deviceID', async (req, res) => {
 
 report.post('/update', async (req, res) => {
     try {
-        const { deviceID, time, status } = req.body;
+        const { deviceID, status } = req.body;
         if (!deviceID) { throw new Error('deviceID is required'); }
-        console.log(await updateReport({ deviceID, time, status }));
+        console.log(await updateReport({ deviceID, status }));
         res.sendStatus(200);
     } catch (e) {
         res.send(e.message).status(400);
@@ -63,6 +63,18 @@ report.post('/delete', async (req, res) => {
         if (!reportID) { throw new Error('reportID is required'); }
         console.log(await deleteReport({ reportID }));
         res.sendStatus(200);
+    } catch (e) {
+        res.send(e.message).status(400);
+        console.log(e);
+    }
+});
+
+report.get("/piReport/:deviceID/:status", async (req, res) => {
+    try {
+        const { deviceID, status } = req.params;
+        if (!deviceID || !status) { throw new Error('deviceID and status are required'); }
+        const result = await createReport({ deviceID, time: new Date().toISOString(), status });
+        res.send(result).status(200);
     } catch (e) {
         res.send(e.message).status(400);
         console.log(e);
