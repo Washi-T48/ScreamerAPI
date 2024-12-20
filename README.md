@@ -26,3 +26,5 @@ And Frontend part on the root Dashboard directory with
 ```
 npm run dev
 ```
+
+I want to thank [@Jenesix](https://www.github.com/Jenesix) and [@Deonmayon](https://www.github.com/Deonmayon), our valuable group member. And honorable mention [@manotham-cc](https://www.github.com/manotham-cc), We greatly appreciated your help.
