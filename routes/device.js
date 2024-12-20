@@ -15,9 +15,9 @@ device.all('/', (req, res) => {
 
 device.post('/create', async (req, res) => {
     try {
-        const { deviceID, name, location, latitude, longtitude } = req.body;
+        const { deviceID, name, location, latitude, longitude } = req.body;
         if (!deviceID) { throw new Error('deviceID is required'); }
-        const result = await createDevice({ deviceID, name, location, latitude, longtitude })
+        const result = await createDevice({ deviceID, name, location, latitude, longitude })
         res.send(result).status(200);
     } catch (e) {
         res.send(e.message).status(400);
@@ -49,9 +49,9 @@ device.get('/list', async (req, res) => {
 
 device.post('/update', async (req, res) => {
     try {
-        const { deviceID, name, location, latitude, longtitude } = req.body;
+        const { deviceID, name, location, latitude, longitude } = req.body;
         if (!deviceID) { throw new Error('deviceID is required'); }
-        console.log(await updateDevice({ deviceID, name, location, latitude, longtitude }));
+        console.log(await updateDevice({ deviceID, name, location, latitude, longitude }));
         res.sendStatus(200);
     } catch (e) {
         res.send(e.message).status(400);

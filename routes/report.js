@@ -4,6 +4,7 @@ const report = Router();
 import {
     createReport,
     listReport,
+    listDetected,
     listReportByDevice,
     updateReport,
     deleteReport,
@@ -32,6 +33,15 @@ report.get('/list', async (req, res) => {
     } catch (e) {
         res.send(e.message).status(400);
         console.log(e);
+    }
+});
+
+report.get('/detected', async (req, res) => {
+    try {
+        const result = await listDetected();
+        res.send(result).status(200);
+    } catch (e) {
+        res.send(e.message).status(400);
     }
 });
 

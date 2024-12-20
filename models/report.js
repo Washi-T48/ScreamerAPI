@@ -10,6 +10,11 @@ const listReport = async () => {
     return stmt.all();
 };
 
+const listDetected = async () => {
+    const stmt = db.prepare('SELECT * FROM reports WHERE status = \'detected\'');
+    return stmt.all();
+};
+
 const listReportByDevice = async (data) => {
     const stmt = db.prepare('SELECT * FROM reports WHERE deviceID = ?');
     return stmt.get(data.deviceID);
@@ -28,6 +33,7 @@ const deleteReport = async (data) => {
 export {
     createReport,
     listReport,
+    listDetected,
     listReportByDevice,
     updateReport,
     deleteReport,

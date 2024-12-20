@@ -1,8 +1,8 @@
 import db from '../config/conn.js';
 
 const createDevice = async (data) => {
-    const stmt = db.prepare('INSERT INTO device (deviceID, name, location, latitude, longtitude) VALUES (?, ?, ?, ?, ?)');
-    return stmt.run(data.deviceID, data.name, data.location, data.latitude, data.longtitude);
+    const stmt = db.prepare('INSERT INTO device (deviceID, name, location, latitude, longitude) VALUES (?, ?, ?, ?, ?)');
+    return stmt.run(data.deviceID, data.name, data.location, data.latitude, data.longitude);
 };
 
 const getDeviceInfo = async (data) => {
@@ -16,8 +16,8 @@ const getDeviceList = async () => {
 };
 
 const updateDevice = async (data) => {
-    const stmt = db.prepare('UPDATE device SET name = ?, location = ?, latitude = ?, longtitude = ? WHERE deviceID = ?');
-    return stmt.run(data.name, data.location, data.latitude, data.longtitude, data.deviceID);
+    const stmt = db.prepare('UPDATE device SET name = ?, location = ?, latitude = ?, longitude = ? WHERE deviceID = ?');
+    return stmt.run(data.name, data.location, data.latitude, data.longitude, data.deviceID);
 };
 
 const deleteDevice = async (data) => {
